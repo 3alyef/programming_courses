@@ -7,7 +7,7 @@ let btnR = btn.addEventListener('click', ()=>{
     var dkv = +document.querySelector('#dkv').value
     if(vl > 0 && gk > 0 && dkv > 0){
         let resulF = (dkv/gk) * vl
-        cs.textContent = resulF
+        cs.textContent = resulF.toFixed(2)
     } else {
         window.alert('Números Invalidos!')
     }
