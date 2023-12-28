@@ -1,5 +1,2 @@
-var obj = {
-    nome: "Alef",
-    idade: 18,
-    profissao: undefined
-}
+var title = document.querySelector("#he")
+console.log(title)

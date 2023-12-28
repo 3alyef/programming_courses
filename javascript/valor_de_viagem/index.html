@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valor da Viagem</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="kol">
+        <div id="boxM">
+            <h1>Calculadora</h1>
+            <div id="valores">
+                <div class="values">
+                    <label for="cb">Valor do litro:</label>
+                    <input type="number" name="cb" id="cb" min="0" value="0">
+                </div>
+                <div class="values">
+                    <label for="gk">Gasto por Km:</label>
+                    <input type="number" name="gk" id="gk" min="0" value="0">
+                </div>
+                <div class="values">
+                    <label for="dkv">Distância da viagem:</label>
+                    <input type="number" name="dkv" id="dkv" min="0" value="0">
+                </div>
+                <div id="custo">
+                    <label for="cs">Custo: R$</label>
+                    <p id="cs">000</p>
+                </div>
+            </div>
+            <input type="button" value="Calcular" id="btn">
+        </div>
+    </div>
+
+    <script src="javaS/calc.js"></script>
+    
+</body>
+</html>
