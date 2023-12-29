@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+:root {
+    --color1: #324FA2;
+    --color2: #323A4E;
+    --color3: #2f33299a;
+    --color4: #75A333;
+
+}
+
+body {
+    background-image: linear-gradient(to right, var(--color3), var(--color1));
+}
+
+#container {
+    
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5em;
+    flex-direction: column;
+    align-items: center;
+}
+
+#addT {
+    width: 21em;
+    text-align: center;
+}
+
+#addT p {
+    font-size: 1.25em;
+    margin: 4px;
+    padding: 4px;
+    color: white;
+}
+
+#btns {
+    display: grid;
+    width: 100%;
+    height: 2.25em;
+    grid-template-columns: 9fr 1fr;
+    justify-content: center;
+
+    
+}
+
+#fazer {
+    padding-left: 4px;
+}
+
+#btns input {
+    border:1px solid black
+}
+
+#tarefas {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#tarefas p {
+    font-size: 1.35em;
+    margin: 4px;
+    padding: 4px;
+    color: white;
+}
+
+#tarefL {
+    display: flex;
+    background-color: white;
+    border: 1px solid black;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    height: 2em;
+}
+
+#tarefL p{
+    color: black;
+    font-size: 1.2em;
+}
+
+#list {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    width: 18%;
+    height: 100%;
+    
+}
+
+input[type=button] {
+    background-color: white;
+    cursor: pointer;
+}
+
+#conf:hover {
+    background-color: var(--color4);
+    color: white;
+}
+
+#delete:hover {
+    background-color: red;
+    color: white;
+}
