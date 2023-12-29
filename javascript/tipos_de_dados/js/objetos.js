@@ -20,3 +20,17 @@ const mult = (a, b, cb) =>{
 
 soma(2, 5, exibir)
 mult(2, 5, exibir)
+
+
+//clearInterval
+
+var paragrafo = document.createElement('p')
+select.appendChild(paragrafo)
+
+var myInterval = setInterval(()=>{
+    paragrafo.innerHTML += 'שלום '
+}, 50)
+
+setTimeout(()=>{
+    clearInterval(myInterval);
+}, 20000)
