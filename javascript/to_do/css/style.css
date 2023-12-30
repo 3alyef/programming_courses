@@ -73,7 +73,11 @@ body {
     color: white;
 }
 
-#tarefL {
+.tarefL {
+    width: 100%;
+}
+
+.tarefL > .Ldiv {
     display: flex;
     background-color: white;
     border: 1px solid black;
@@ -84,12 +88,12 @@ body {
     height: 2em;
 }
 
-#tarefL p{
+#tarefas > .tarefL > .Ldiv > p{
     color: black;
     font-size: 1.2em;
 }
 
-#list {
+.list {
     display: grid;
     grid-template-columns: 2fr 2fr;
     width: 18%;
@@ -102,12 +106,12 @@ input[type=button] {
     cursor: pointer;
 }
 
-#conf:hover {
+.conf:hover {
     background-color: var(--color4);
     color: white;
 }
 
-#delete:hover {
+.delete:hover {
     background-color: red;
     color: white;
 }
