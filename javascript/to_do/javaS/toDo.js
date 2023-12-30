@@ -2,21 +2,37 @@ const btnAdd = document.querySelector("#btnAdd")
 const fazer = document.querySelector('#fazer')
 let tarefas = []
 let tarefL = document.querySelector('.tarefL')
-
+let btnConf = document.querySelectorAll('.conf')
+let btnC = [...btnConf]
 btnAdd.addEventListener('click', ()=>{
     if(fazer.value != '') {
+        console.log('antes'+btnC)
         tarefas.push(fazer.value)
         fazer.value = ''
         //console.log(tarefas)
-    
+        
         remover()
         imprimir(tarefas, tarefL)
+        console.log('depois'+ btnC)
+        
+        
         
     } else {
         window.alert('Digite algo!')
     }
    
 })
+
+
+btnC.map((el)=>{
+    el.addEventListener('click', ()=>{
+      
+        el.classList.toggle('green')
+        console.log(btnC)
+    })
+})
+
+
 
 var imprimir = (arr, father)=>{
 

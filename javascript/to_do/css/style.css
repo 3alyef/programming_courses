@@ -115,3 +115,9 @@ input[type=button] {
     background-color: red;
     color: white;
 }
+
+
+.green {
+    background-color: var(--color4) !important;
+    color: white !important;
+}
