@@ -4,60 +4,22 @@ let arrTD = []
 
 let listaT = document.querySelector('.tarefL')
 
-
-
-
-
-
-
 let dT = btnA.addEventListener('click', ()=>{
-    
-
     if(fazer.value != '') {
         remover()
         arrTD.push(fazer.value)
         fazer.value = ''
         imprimir(arrTD)
 
-
-        
-
-        
-        
     } else {
         window.alert('Digite algo!')
     }
 
-    let inf = atualizar()
-
-    
-    
-    
-
-
 })
-
-
-dT.values()
-
-
-let atualizar= () =>{
-    let btnC = [...document.querySelectorAll('.conf')]
-    let btnDL = [...document.querySelectorAll('.delete')]
-    return [btnC, btnDL]
-}
-
-
-
 
 let remover = ()=>{
     listaT.innerHTML = ''
 }
-
-
-
-
-
 
 let imprimir = (arr) =>{
     arr.map((el)=>{
