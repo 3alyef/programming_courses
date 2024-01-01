@@ -54,6 +54,10 @@ body {
     padding-left: 4px;
 }
 
+#fazer:focus {
+    outline: none;
+}
+
 #btns input {
     border:1px solid black
 }
@@ -104,6 +108,7 @@ body {
 input[type=button] {
     background-color: white;
     cursor: pointer;
+    transition: .5s;
 }
 
 .conf:hover {

@@ -4,24 +4,22 @@ let arrTD = []
 
 let listaT = document.querySelector('.tarefL')
 
-let dT = btnA.addEventListener('click', ()=>{
+const dT = btnA.addEventListener('click', ()=>{
     if(fazer.value != '') {
-        remover()
+        
         arrTD.push(fazer.value)
         fazer.value = ''
         imprimir(arrTD)
 
-    } else {
-        window.alert('Digite algo!')
     }
-
 })
 
-let remover = ()=>{
-    listaT.innerHTML = ''
-}
 
-let imprimir = (arr) =>{
+
+function imprimir(arr){
+
+    limparL()//limpa a lista
+
     arr.map((el)=>{
         let divC = document.createElement('div')
         divC.classList = 'Ldiv'
@@ -54,9 +52,38 @@ let imprimir = (arr) =>{
         
 
         divC.appendChild(listC)
+
+        
         listaT.appendChild(divC)
+
+        const removeBtn = divC.querySelector('.delete').addEventListener('click', ()=>{
+            remove(el, arr)
+        })
+
+        const confBTN = divC.querySelector('.conf').addEventListener('click', ()=>{
+       
+            divC.querySelector('.conf').classList.toggle('green')
+            console.log(this)
+          
+        })
 
     })
 }
+
+
+const limparL = ()=>{
+    listaT.innerHTML = ''
+}
+
+let remove = (task, arr)=>{
+    for(var i = 0; i < arr.length; i++){//remove do array a task
+        if(arr[i] == task){
+            arr.splice(i, 1)
+        } 
+    }
+    imprimir(arr)//imprime as tasks
+}
+
+
 
 
