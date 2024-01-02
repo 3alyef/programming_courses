@@ -140,12 +140,13 @@ ion-icon {
     height: 100%;
     width: 2em;
     cursor: pointer;
-    font-size: 0.95em;
-   
+
+    
 }
 
 .conf {
     right: 2em;
+    
 }
 
 .delete {
