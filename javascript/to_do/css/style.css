@@ -95,6 +95,7 @@ body {
 #tarefas > .tarefL > .Ldiv > p{
     color: black;
     font-size: 1.2em;
+    user-select: none;
 }
 
 .list {
@@ -102,7 +103,7 @@ body {
     grid-template-columns: 2fr 2fr;
     width: 18%;
     height: 100%;
-    
+    position: relative;
 }
 
 input[type=button] {
@@ -125,4 +126,23 @@ input[type=button] {
 .green {
     background-color: var(--color4) !important;
     color: white !important;
+}
+
+ion-icon {
+    background-color: white;
+    transition: .5s;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 2em;
+    cursor: pointer;
+   
+}
+
+.conf {
+    right: 2em;
+}
+
+.delete {
+    right: 0px;
 }

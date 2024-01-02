@@ -35,16 +35,14 @@ function imprimir(arr){
         let listC = document.createElement('div')
         listC.classList = 'list'
 
-        let inputC = document.createElement('input')
-        inputC.setAttribute('type', 'button')
-        inputC.setAttribute('value', 'cf')
+        let inputC = document.createElement('ion-icon')
+        inputC.setAttribute('name', 'checkmark-outline')
         inputC.classList = 'conf'
         
         listC.appendChild(inputC)
 
-        let inputD = document.createElement('input')
-        inputD.setAttribute('type', 'button')
-        inputD.setAttribute('value', 'ap')
+        let inputD = document.createElement('ion-icon')
+        inputD.setAttribute('name', 'close-outline')
         inputD.classList = 'delete'
         
         listC.appendChild(inputD)
