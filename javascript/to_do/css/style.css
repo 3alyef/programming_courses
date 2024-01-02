@@ -40,6 +40,10 @@ body {
     color: white;
 }
 
+#btnAdd {
+    font-size: 1.8em;
+}
+
 #btns {
     display: grid;
     width: 100%;
@@ -136,6 +140,7 @@ ion-icon {
     height: 100%;
     width: 2em;
     cursor: pointer;
+    font-size: 0.95em;
    
 }
 
