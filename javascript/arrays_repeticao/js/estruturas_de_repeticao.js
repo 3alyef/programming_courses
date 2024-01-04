@@ -22,6 +22,7 @@ let btns = btnInput.addEventListener('click', ()=>{
             tf=true
         }else if(names.length == i && tf==false){
             console.log('Nome não encontrado na base de dados!')
+            tf=true
         }
     })
 })
