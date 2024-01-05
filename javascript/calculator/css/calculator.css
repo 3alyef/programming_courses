@@ -31,11 +31,13 @@ body {
 
 #calc {
     background-color: var(--color6);
-    height: 24em;
+    height: 25em;
     width: 18em;
     border-radius: .2em;
     padding: .22em;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 #nm {
@@ -45,9 +47,16 @@ body {
 }
 
 #main {
-    height: 80%;
+    height: 100%;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#display {
+    height: 28%;
 }
 
 #previous-operation {
@@ -55,18 +64,23 @@ body {
     overflow-wrap: break-word;
     margin: .5em 0em .5em .5em;
     color: var(--color5);
+    margin: 8px;
+    height: 20px;
 
 }
 
 #current-operation {
+    overflow-wrap: break-word;
     text-align: right;
     margin: .4em .2em .4em 0em;
     font-size: 1.8em;
+    height: 35px;
+   
 }
 
 
 #keyboard {
-    height: 91%;
+    height: 90%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: .15em;
