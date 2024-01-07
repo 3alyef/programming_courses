@@ -38,21 +38,22 @@ class calConstructor{
         })
     }
 
-    updateScreen(proN, copN){
+    updateScreen(proN, copN, op){
         this.proN = proN
         this.copN = copN
-        console.log(this.proN, this.copN)
+        this.op = op
+        console.log(this.proN, this.copN, this.op)
     }
 
     calc(el){
         el.addEventListener('click', ()=>{
             let nop = el.value
             if(!isNaN(+nop)){
-                if(this.cop.textContent.length < 16){
+                if(this.cop.textContent.length < 16 && this.op != 0){
                     this.cop.textContent += nop
                 }
             } else {
-                this.operat(nop)
+                this.operat(nop, true)
             }
 
 
@@ -63,7 +64,8 @@ class calConstructor{
 
 
 
-    operat(nop){
+    operat(nop, tf){
+        this.tf = tf
         
         switch (nop){
             case 'CE':
@@ -73,7 +75,7 @@ class calConstructor{
             case 'C':
                 this.prop.textContent = ''
                 this.cop.textContent = ''
-                this.updateScreen(0, 0)
+                this.updateScreen(0, 0, 0)
                 break
             case 'DEL':
                 this.cop.textContent = this.cop.textContent.slice(0, -1)
@@ -81,27 +83,135 @@ class calConstructor{
                 this.updateScreen(this.proN, np)
                 
                 break
-            case '/':
+            case '/':        
+            if(tf){
+                    if(this.prop.textContent == ''){
+                        this.prop.textContent = (this.cop.textContent + ` ${nop}`)
+                        this.updateScreen(this.cop.textContent, this.copN, nop)
+                        this.cop.textContent = ''
+                        
+                    } else if (this.cop.textContent == ''){
+                        this.prop.textContent = this.prop.textContent.slice(0, -1)
+                        this.prop.textContent += nop
+
+
+                        this.updateScreen(this.proN, this.copN.textContent, nop)
+
+                    } else if (!(this.prop.textContent == '') && !(this.cop.textContent == '')) {
+                        this.updateScreen(this.proN, this.cop.textContent, this.op)
+
+
+                    this.calculate()
+                    }    
+                    
+                } else {
+                    this.prop.textContent = (+this.proN / +this.copN)
+                    this.updateScreen(0, 0, 0)
+                }
 
                 break
             case 'X':
-
+                if(tf){
+                    if(this.prop.textContent == ''){
+                        this.prop.textContent = (this.cop.textContent + ` ${nop}`)
+                        this.updateScreen(this.cop.textContent, this.copN, nop)
+                        this.cop.textContent = ''
+                         
+                    } else if (this.cop.textContent == ''){
+                         this.prop.textContent = this.prop.textContent.slice(0, -1)
+                         this.prop.textContent += nop
+    
+    
+                         this.updateScreen(this.proN, this.copN.textContent, nop)
+    
+                    } else if (!(this.prop.textContent == '') && !(this.cop.textContent == '')) {
+                        this.updateScreen(this.proN, this.cop.textContent, this.op)
+    
+    
+                       this.calculate()
+                    }
+    
+    
+                    
+                        
+                } else {
+                    this.prop.textContent = (+this.proN * +this.copN)
+                    this.updateScreen(0, 0, 0)
+                }
                 break
             case '-':
+                if(tf){
+                        if(this.prop.textContent == ''){
+                            this.prop.textContent = (this.cop.textContent + ` ${nop}`)
+                            this.updateScreen(this.cop.textContent, this.copN, nop)
+                            this.cop.textContent = ''
+                            
+                        } else if (this.cop.textContent == ''){
+                            this.prop.textContent = this.prop.textContent.slice(0, -1)
+                            this.prop.textContent += nop
+        
+        
+                            this.updateScreen(this.proN, this.copN, nop)
+        
+                        } else if (!(this.prop.textContent == '') && !(this.cop.textContent == '')) {
+                            this.updateScreen(this.proN, this.cop.textContent, this.op)
+        
+        
+                        this.calculate()
+                        }       
+                    } else {
+                        this.prop.textContent = (+this.proN - +this.copN)
+                        this.updateScreen(0, 0, 0)
+                    }
 
                 break
             case '+':
+                if(tf){
+                    if(this.prop.textContent == ''){
+                        this.prop.textContent = (this.cop.textContent + ` ${nop}`)
+                        this.updateScreen(this.cop.textContent, this.copN, nop)
+                        this.cop.textContent = ''
+                        
+                    } else if (this.cop.textContent == ''){
+                        this.prop.textContent = this.prop.textContent.slice(0, -1)
+                        this.prop.textContent += nop
 
+
+                        this.updateScreen(this.proN, this.cop.textContent, nop)
+
+                    } else if (!(this.prop.textContent == '') && !(this.cop.textContent == '')) {
+                        this.updateScreen(this.proN, this.cop.textContent, this.op)
+
+
+                    this.calculate()
+                    }
+                } else {
+                    this.prop.textContent = (+this.proN + +this.copN)
+                    this.updateScreen(0, 0, 0)
+                }
+
+                
                 break
             case '.':
                 if(!this.cop.textContent.includes('.')){
                     this.cop.textContent += nop
+                    
                 }
                 break
             case '=':
 
                 break
         }
+    }
+
+
+    calculate(){
+        this.prop.textContent = ''
+        this.cop.textContent = ''
+        this.operat(this.op, false)
+        
+        
+        
     }
 
 }
