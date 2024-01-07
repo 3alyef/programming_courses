@@ -12,13 +12,11 @@
     --color5: rgba(24, 24, 24, 0.609);
     --color6: rgb(120, 155, 215);
     --color7: #3d4f8171;
-
-
 }
-
 
 body {
     height: 100vh;
+    user-select: none;
 }
 
 #container {
@@ -52,7 +50,6 @@ body {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
 }
 
 #display {
@@ -66,7 +63,6 @@ body {
     color: var(--color5);
     margin: 8px;
     height: 20px;
-
 }
 
 #current-operation {
@@ -75,9 +71,7 @@ body {
     margin: .4em .2em .4em 0em;
     font-size: 1.8em;
     height: 35px;
-   
 }
-
 
 #keyboard {
     height: 90%;
@@ -87,14 +81,11 @@ body {
     box-sizing: border-box;
 }
 
-
-
 .btns {
     cursor: pointer;
     font-weight: 500;
     font-size: 1em;
     border: 2px solid transparent ;
-
 }
 
 .btns:hover {
