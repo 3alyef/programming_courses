@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 63</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./build/scripts.js" defer></script>
+</head>
+<body class="bodyNormal">
+    <div id="Kol">
+        <div id="container">
+            <form id="form">
+                <fieldset id="field">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name">
+                    <label for="portas">Portas:</label>
+                    <input type="number" id="portas" name="portas">
+                    <label for="blindagem">Blindagem:</label>
+                    <input type="number" id="blindagem" name="blindagem" disabled>
+                    <label for="municao">Munição:</label>
+                    <input type="number" id="municao" name="municao" disabled>
+                    <div id="tipo">
+                        <h3>Tipo:</h3>
+                        <input type="radio" name="tipo" id="militar"><label for="militar">Militar</label>
+                        <input type="radio" name="tipo" id="normal" checked><label for="normal">Normal</label>
+                    </div>
+                    <input type="submit" id="submit" name="submit" value="Adicionar" class="btns">
+                </fieldset>
+                <div id="imagem">
+                    <img src="./src/public/normal_gol.jpg" alt="carro_normal" class="imgCar" id="imgs">
+                </div>
+                
+                
+            </form>
+            <div id="carros">
+                <div id="militarCar" class="carrosCards">
+                    <div class="card">
+                        <p class="type">Militar</p>
+                        <div class="info">
+                            <p>Nome: alpha</p>
+                            <p>Portas: 4</p>
+                            <p>Blindagem: 500</p>
+                            <p>Municao: 500</p>
+                        </div>
+                        <div class="btnsContainer">
+                            <input type="button" value="Remover" class="btns">
+                            <input type="button" value="Editar" class="btns">
+                        </div>
+                    </div>
+                </div>
+                <div id="normalCar" class="carrosCards">
+                    <div class="card">
+                        <p class="type">Normal</p>
+                        <div class="info">
+                            <p>Nome: beta</p>
+                            <p>Portas: 4</p>
+                            
+                        </div>
+                        <div class="btnsContainer">
+                            <input type="button" value="Remover" class="btns">
+                            <input type="button" value="Editar" class="btns">
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

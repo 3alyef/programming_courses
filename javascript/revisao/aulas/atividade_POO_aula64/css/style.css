@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    ---colorM: rgb(69, 75, 65);
+    ---colorN: rgb(150, 150, 150);
+}
+
+
+.bodyNormal {
+    background-image: linear-gradient(to bottom, black, var(---colorN));
+}
+
+.bodyMilitar {
+    background-image: linear-gradient(to bottom, black, var(---colorM)) !important;
+}
+
+input[type="button"], input[type="radio"], input[type="submit"] {
+    cursor: pointer;
+}
+
+#Kol {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px 0px 25px 0px;
+}
+
+#container {
+    min-height: 500px;
+    width: 90%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 280px;
+    gap: 10px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.484);
+}
+
+#field {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+
+#normal:checked{
+    accent-color: var(---colorN);
+
+}
+
+#militar:checked{
+    accent-color: var(---colorM);
+    
+}
+
+
+#tipo {
+    margin: 10px 0px;
+}
+
+#tipo label {
+    margin-left: 4px !important;
+}
+
+#tipo h3 {
+    margin: 4px 0px;
+}
+
+
+#field label {
+    margin: 2px 0px;
+    
+}
+
+#imagem {
+    width: 200px;
+}
+
+.imgCar {
+    width: 200px;
+    height: 120px;    
+}
+
+
+
+#carros {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    min-height: 250px;
+}
+
+#militarCar {
+    background-color: var(---colorM);
+
+}
+
+#normalCar {
+    background-color: var(---colorN);
+
+}
+
+.carrosCards {
+    padding: 2px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    
+}
+
+.card {
+    background-color: white;
+    width: 145px;
+    height: 125px;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.card .type {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.646);
+}
+
+.card .info {
+    padding: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.499);
+    border-radius: 5%;
+    height: 100px;
+}
+
+.btnsContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 5px;
+    gap: 2px;
+
+}
+
+.btns {
+    background-color: white;
+    padding: 2px;
+    border: 1px solid rgba(0, 0, 0, 0.565);
+    border-radius: 2%;
+    transition: all .25s ease;
+}
+
+.btns:hover {
+    background-color: rgba(0, 0, 0, 0.423);
+    color: white;
+    
+}
+
