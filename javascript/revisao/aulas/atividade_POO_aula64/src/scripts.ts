@@ -1,187 +1,219 @@
-const tipo = (document.querySelector('#tipo') as HTMLElement)?.querySelectorAll('input')
+const nome = document.querySelector('#name') as HTMLInputElement;
+const portas = document.querySelector('#portas') as HTMLInputElement;
+const blindagem = document.querySelector('#blindagem') as HTMLInputElement;
+const municao = document.querySelector('#municao') as HTMLInputElement;
+
+const tipos = (document.querySelector('#tipo') as HTMLElement)?.querySelectorAll('input')
+
 const imgs = document.querySelector('#imgs') as HTMLElement
-const tipos = [...tipo]
 
-const nome = document.querySelector('#name') as HTMLInputElement
-const portas = document.querySelector('#portas') as HTMLInputElement
-const blindagem = document.querySelector('#blindagem') as HTMLInputElement
-const municao = document.querySelector('#municao') as HTMLInputElement
+const submit = document.querySelector('#submit') as HTMLFormElement
 
 
-const submit = document.querySelector('#submit')
+const showMilitit = document.querySelector('#militarCar') as HTMLElement
 
-const militarCards = document.querySelector('#militarCar') as HTMLElement
+const showNormal = document.querySelector('#normalCar') as HTMLElement
 
-const normalCards = document.querySelector('#normalCar') as HTMLElement
-let militarCars:any[]
-let normalCars:any[]
-
-let carrosMil:any[] = []
-let carrosNorm:any[] = []
-let carros:any = {}
-fetch('http://localhost:5000/carros', {
-    method: 'GET',
-    headers: {
-        'Content-Type':'application/json'
-    }
-}).then((resp)=>resp.json()).then((data)=>{
-    carros = data
-    console.log(data)
-}).catch((err)=>console.log(err)).then(()=>{
-    militarCars = carros[0]?.militar || []
-    normalCars = carros[0]?.normal || []
-    cardsGenerator(normalCars, false)
-    cardsGenerator(militarCars, true)
-    
-    
-})
+let cardsNormais:any[]= []
+let cardsMilitares:any[]= []
 
 
-const cardsGenerator = (elemento:any[], isMilitar:boolean)=>{
-    elemento.forEach((el)=>{
-        let editar = document.createElement('input')
-        editar.setAttribute('type', 'button')
-        editar.setAttribute('value', 'Editar')
-        editar.classList.add('btns')
-        let remover = document.createElement('input')
-        remover.setAttribute('type', 'button')
-        remover.setAttribute('value', 'Remover')
-        remover.classList.add('btns')
-        let btnsContainer = document.createElement('div')
-        btnsContainer.appendChild(remover)
-        btnsContainer.appendChild(editar)
+// Coleta os dados
+const normaisRequest = () => {
+    const normal = new Promise<any>((resolve, reject) => {
+        fetch('http://localhost:5000/normal', {
+            method: 'GET',
+            headers:{
+                "Content-Type":'application/json'
+            }
+        }).then((resp)=>resp.json()).then((data)=> resolve(data)).catch((err)=>reject(err))
 
-        let info = document.createElement('div')
-        info.classList.add('info')
-        
-        let p = document.createElement('p')
-        if(isMilitar){
-            p.textContent = 'Militar'
-        }else{
-            p.textContent = 'Normal'
-        }
-        
-        p.classList.add('type')
-        let card = document.createElement('div')
-    
-
-    
-        const nome = document.createElement('p')
-        nome.textContent = `Nome: ${el.nome}`
-        info.appendChild(nome)
-        const portas = document.createElement('p')
-        portas.textContent = `Portas ${el.portas}`
-        info.appendChild(portas)
-
-        if(isMilitar){
-            const blindagem = document.createElement('p')
-            blindagem.textContent = `Blindagem: ${el.blindagem}`
-            info.appendChild(blindagem)
-            const municao = document.createElement('p')
-            municao.textContent = `Munição: ${el.municao}`
-            info.appendChild(municao)
-
-        }
-
-        card.setAttribute('id', el.id)
-
-    
-
-        card.classList.add('card')
-        card.appendChild(p)
-        card.appendChild(info)
-        card.appendChild(btnsContainer)
-
-        if(isMilitar){
-            militarCards.appendChild(card)
-        } else {
-            normalCards.appendChild(card)
-        }
 
     })
-    
+    return normal
 }
 
-tipos.forEach((el, i)=>{
-    el.addEventListener('click',()=>{
-        if(el.id == 'militar'){
-
-            document.body.classList.add('bodyMilitar')
-            imgs.setAttribute('src', './src/public/militar.jpg')
-            imgs.setAttribute('alt', 'carro_militar')
-            blindagem.disabled = false
-            municao.disabled = false
-        } else {
-
-            document.body.classList.remove('bodyMilitar')
-            imgs.setAttribute('src', './src/public/normal_gol.jpg')
-            imgs.setAttribute('alt', 'carro_normal')
-            blindagem.disabled = true
-            municao.disabled = true
-        }
+const militaresRequest = () => {
+    const militar = new Promise<any>((resolve, reject) => {
+        fetch('http://localhost:5000/militar', {
+            method: 'GET',
+            headers: {
+                'Content-Type':'application/json'
+            }
+        }).then((resp)=>resp.json()).then((data)=> resolve(data)).catch((err)=> reject(err))
     })
+    return militar
+}
+
+const cardGenerator = (el:any, type:string)=>{
+    const info = document.createElement('div')
+    info.setAttribute('class', 'info')
+    const nomeL = document.createElement('p')
+    nomeL.textContent = `Nome: ${el.nome}`
+    const portasL = document.createElement('p')
+    portasL.textContent = `Portas: ${el.portas}`
+    const blindageL = document.createElement('p')
+    blindageL.textContent = `Blindagem: ${el.blindagem}`
+    const municaoL = document.createElement('p')
+    municao.textContent = `Munição: ${el.municao}`
+    info.appendChild(nomeL)
+    info.appendChild(portasL)
+    info.appendChild(blindageL)
+    info.appendChild(municaoL)
+
+
+    const btns = document.createElement('div')
+    btns.setAttribute('class', 'btnsContainer')
+
+    const remover = document.createElement('input')
+    remover.setAttribute('type', 'button')
+    remover.setAttribute('value', 'Remover')
+    remover.setAttribute('class', 'btns')
+
+    const editar = document.createElement('input')
+    editar.setAttribute('type', 'button')
+    editar.setAttribute('value', 'Editar')
+    editar.setAttribute('class', 'btns')
+
+    btns.appendChild(remover)
+    btns.appendChild(editar)
+
+    const title = document.createElement('p')
+    title.textContent = type
+    title.setAttribute('class', 'type')
+
+    const card = document.createElement('div')
+    card.setAttribute('class', 'card')
+
+    card.appendChild(title)
+    card.appendChild(info)
+    card.appendChild(btns)
+    return card
+}
+
+const cardsConstrutor = (normais:any[], militares:any[]) => {
+    normais.forEach((el)=>{
+        const card = cardGenerator(el, 'Normal')
+        showNormal.appendChild(card)
+    })
+
+    militares.forEach((el)=>{
+        const card = cardGenerator(el, 'Militar')
+        showMilitit.appendChild(card)
+    })
+}
+
+
+// Renderiza todos os Cards na tela principal
+const showCards = async ()=>{
+    try{
+        cardsNormais = await normaisRequest()
+        cardsMilitares = await militaresRequest()
+        
+        cardsConstrutor(cardsNormais, cardsMilitares)
+
+        
+    }catch(error){
+        console.log(error)
+    }
+}
+
+showCards()
+
+
+
+// Configura a troca de cor e imagem e bloqueia ou debloqueia a blindagem e munição
+
+tipos.forEach((el)=>{
+    el.addEventListener('click', ()=>{
+        if(el.id === 'militar'){
+            trocaImagem(imgs, true)
+            trocaCor(true)
+            blindagemMunicao(true, blindagem, municao)
+        } else {
+            trocaImagem(imgs, false)
+            trocaCor(false)
+            blindagemMunicao(false, blindagem, municao)
+        }
+        
+    })
+   
 })
 
-submit?.addEventListener('click', (el)=>{
-    el.preventDefault();
-    const nomeV:string = nome.value
-    const portasV:number = Number(portas.value)
-    let blindagemV:number = 0
-    let municaoV:number = 0
-    let tipoC:string = ''
-    let newCar:any = {}
-    tipos.map((e)=>{
-        if(e.checked && e.id == 'militar'){
-            blindagemV = Number(blindagem.value)
-            municaoV = Number(municao.value)
-            tipoC = e.id
+const trocaImagem = (imagem:HTMLElement, isMilitar:boolean)=>{
+    if(isMilitar){
+        imagem.setAttribute('src', './src/public/militar.jpg')
+        imagem.setAttribute('alt', 'carro_militar')
+    } else {
+        imagem.setAttribute('src', './src/public/normal_gol.jpg')
+        imagem.setAttribute('alt', 'carro_modelo_gol')
+    }
+}
+
+const trocaCor = (isMilitar:boolean)=>{
+    if(isMilitar){
+        document.body.classList.toggle('bodyMilitar')
+    } else {
+        document.body.classList.toggle('bodyMilitar')
+    }
+}
+
+const blindagemMunicao = (isMilitar:boolean, bld:HTMLInputElement, mnc:HTMLInputElement)=>{
+    if(isMilitar){
+        bld.disabled = false;
+        mnc.disabled = false;
+    } else {
+        bld.disabled = true;
+        mnc.disabled = true;
+    }
+}
+
+const setData = (isMilitar:boolean)=>{
+    const data = {"nome" : '', "portas" : 0, "blindagem" : 0, "municao" : 0}
+    let nomeValue:string = nome.value
+    let portasValue:number = Number(portas.value)
+    if(isMilitar){
+        let blindagemValue:number = Number(blindagem.value)
+        let municaoValue:number = Number(municao.value)
+        data.blindagem = blindagemValue
+        data.municao = municaoValue
+    } 
+    data.nome = nomeValue
+    data.portas = portasValue
+    
+    return data
+}
+
+submit.addEventListener('click', (el)=>{
+    el.preventDefault()
+    let isMilitar:boolean = false
+    
+    tipos.forEach((el)=>{
+        if(el.checked && el.id == 'militar'){
+            isMilitar=true
             
-        } else if(e.checked){
-            tipoC = e.id
         }
     })
-    let lengthM = 0
-    let lengthN = 0
-    let carrosUpdate:any = []
-    militarCars.forEach((e)=>{
+    const newCar:any = setData(isMilitar)
 
-        carrosUpdate.push(e)
-        lengthM ++
-        
-    })
+    const newCarId:number = 2
+    const newCarTipo:string = isMilitar ? 'militar':'normal'
 
-    normalCars.forEach((e)=>{
-
-        carrosUpdate.push(e)
-        lengthN ++
-        
-    })
-
-    if(tipoC == "militar"){
-        newCar = {"nome": nomeV, "portas" : portasV, "blindagem": blindagemV, "municao":municaoV, "id": lengthM}
-        carrosUpdate.push(newCar)
-        
-
-         
+    if(isMilitar){
+        cardsMilitares.push(newCar)
+        cardsConstrutor(cardsMilitares, cardsNormais)
     } else {
-        newCar = {"nome": nomeV, "portas" : portasV, "id": lengthN}
-
-        carrosUpdate.push(newCar)
+        cardsNormais.push(newCar)
+        cardsConstrutor(cardsMilitares, cardsNormais)
     }
-    
-    
 
-    
-    
-    console.log(carrosUpdate)
-    
-    fetch('http://localhost:5000/carros', {
-        method:'PATCH',
+
+    fetch(`http://localhost:5000/${newCarTipo}`, {
+        method: 'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type' : 'application/json'
         },
-        body: JSON.stringify(carrosUpdate)
-    }).then((resp)=>resp.json()).then((data)=> console.log(data)).catch((err)=>console.log(err))
-
-
+        body: JSON.stringify(newCar)
+    }).then((resp)=> resp.json()).then((data)=>console.log('sucesso!', data)).catch((err)=>console.log(err))
+    
 })
