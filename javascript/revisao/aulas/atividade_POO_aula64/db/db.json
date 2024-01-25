@@ -1,25 +1,25 @@
 {
   "militar": [
     {
-      "id": "4287",
-      "nome": "Beit Knesset",
-      "portas": 4,
-      "blindagem": 0,
-      "municao": 0
-    },
-    {
       "id": "3c39",
       "nome": "merkava",
-      "portas": 2,
-      "blindagem": 1200,
-      "municao": 780
+      "portas": "2",
+      "blindagem": "1200",
+      "municao": "900"
     }
   ],
   "normal": [
     {
-      "id": "38ba",
-      "nome": "otoh",
-      "portas": 4,
+      "id": "3927",
+      "nome": "VW",
+      "portas": "4",
+      "blindagem": "",
+      "municao": ""
+    },
+    {
+      "id": "177d",
+      "nome": "",
+      "portas": 0,
       "blindagem": 0,
       "municao": 0
     }
