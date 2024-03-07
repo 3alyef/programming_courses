@@ -1,0 +1,22 @@
+{
+  "name": "nodesequelizemysql",
+  "version": "1.0.0",
+  "description": "inicio com banco de dados MySQL e Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index",
+    "dev": "nodemon"
+  },
+  "author": "Alef A. Araujo",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
