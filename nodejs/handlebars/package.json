@@ -1,0 +1,27 @@
+{
+  "name": "nodesequelizemysql",
+  "version": "1.0.0",
+  "description": "handlebars, nodejs and MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index",
+    "dev": "nodemon"
+  },
+  "author": "Alef A. Araujo",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "app-root-path": "^3.1.0",
+    "concurrently": "^8.2.2",
+    "express": "^4.18.3",
+    "express-handlebars": "^7.1.2",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
