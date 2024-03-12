@@ -1,14 +1,14 @@
-import { Sequelize } from 'sequelize';
+import { Sequelize, DataTypes, Model } from 'sequelize';
 import dotenv from 'dotenv';
 dotenv.config();
 
 const dbName:string = String(process.env.DB_NAME);
 const dbUser:string = String(process.env.DB_USER);
-const dbPassword = process.env.DB_PASSWORD;
+const dbPassword = process.env.DB_PASSWORD || 'undefined';
 const dbHost = process.env.DB_HOST || "localhost";
 
 
-const sequelize = new Sequelize(
+const sequelize = new Sequelize ( // It do Authentication on Data-base
     dbName, 
     dbUser, 
     dbPassword, 
@@ -22,7 +22,7 @@ const sequelize = new Sequelize(
     }      
 );
 
-const authenticateDB = async () => {
+const authenticateDB = async () => { // Confirm the authentication validation on Data-base
     try {
         await sequelize.authenticate();
         console.log("Conexão bem-sucedida!");
@@ -31,5 +31,7 @@ const authenticateDB = async () => {
     }
 };
 
-export { authenticateDB }
+
+
+export { Sequelize, sequelize, DataTypes, Model, authenticateDB }
 
